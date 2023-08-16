@@ -19,12 +19,9 @@ function AddBook () {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        setFormData({
-            ["id"]: formdata.title + "123",
-            ...formdata,
-        })
+        const id = formdata.title + "123";
         console.log(formdata)
-        const resp = await axios.post('https://csis3380-final-server-0mhb.onrender.com/', formdata);
+        const resp = await axios.post('https://csis3380-final-server-0mhb.onrender.com/', {...formdata, ["id"]: id});
         console.log(resp.data);
         navigate("/", { replace: true });
     }
